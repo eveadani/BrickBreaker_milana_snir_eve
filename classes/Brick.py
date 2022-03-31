@@ -2,7 +2,7 @@ import pygame
 
 from constants import *
 from helpers import screen
-
+import random
 
 class Brick:
     def __init__(self, brick_color, brick_width, brick_height, x_pos, y_pos):
@@ -40,5 +40,7 @@ class Brick:
 
     def display_brick(self):
         screen.blit(self.image, (self.x_pos, self.y_pos))
+
+
 
 
