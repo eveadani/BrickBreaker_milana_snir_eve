@@ -15,8 +15,7 @@ def main():
     clock = pygame.time.Clock()
 
     # Set up background image
-    img = pygame.image.load("images/main_background.png")
-    img = pygame.transform.scale(img, (WINDOW_WIDTH, WINDOW_HEIGHT))
+    set_background()
     brick1 = Brick("green", BRICK_WIDTH, BRICK_HEIGHT, 20, 20)
 
 
@@ -35,8 +34,7 @@ def main():
                 if event.key == pygame.K_UP:
                     pass
 
-        # Display the background
-        screen.blit(img, (0, 0))
+
         brick1.display_brick()
         # Update the screen
         pygame.display.flip()

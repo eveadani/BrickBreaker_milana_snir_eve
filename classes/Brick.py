@@ -26,6 +26,18 @@ class Brick:
             img = pygame.image.load("Images/purple_brick.jpg")
         return pygame.transform.scale(img, (self.brick_width, self.brick_height))
 
+    def get_x_pos(self):
+        return self.x_pos
+
+    def get_x_pos(self):
+        return self.y_pos
+
+    def get_width_pos(self):
+        return self.brick_width
+
+    def get_height_pos(self):
+        return self.brick_height
+
     def display_brick(self):
         screen.blit(self.image, (self.x_pos, self.y_pos))
 
