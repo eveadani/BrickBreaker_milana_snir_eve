@@ -1,4 +1,4 @@
-# Width and Height of the project window
+ # Width and Height of the project window
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 600
 
@@ -14,8 +14,8 @@ BRICK_DISTANCE = 60
 
 # Color Shortcuts
 
-YELLOW = Images/yellow_brick.jpg
-RED = Images/red_brick.jpg
-BLUE = Images/blue_brick.jpg
-GREEN = Images/green_brick.jpg
-PURPLE = Images/purple_brick.jpg
+YELLOW ="yellow"
+RED = "red"
+BLUE = "blue"
+GREEN = "green"
+PURPLE = "purple"
