@@ -17,7 +17,7 @@ def main():
     # Set up background image
     set_background()
     brick1 = Brick("green", BRICK_WIDTH, BRICK_HEIGHT, 20, 20)
-
+    row_displayer(colored_bricks(0))
 
     running = True
     while running:

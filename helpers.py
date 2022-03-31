@@ -1,9 +1,7 @@
 import pygame
 
-from constants import*
-from classes.Brick import*
-
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+from constants import *
+from classes.Brick import *
 
 
 def mouse_in_button(button, mouse_pos):
@@ -21,35 +19,42 @@ def mouse_in_button(button, mouse_pos):
             button.y_pos < mouse_pos[1] < button.y_pos + button.height:
         return True
 
+
 def colored_bricks(y_pos):
     if y_pos < 0 or y_pos > WINDOW_HEIGHT:
         return False
     colored_bricks_list = [RED, YELLOW, GREEN, PURPLE, BLUE]
     list_brick = []
     x_pos = 0
-    for i in range (10):
+    for i in range(10):
         color = random.choice(colored_bricks_list)
         random_brick = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x_pos, y_pos)
         list_brick.append(random_brick)
         x_pos += BRICK_DISTANCE
     return list_brick
+
+
 def row_displayer(list_of_bricks):
     for i in list_of_bricks:
         i.display_brick()
+
 
 def set_background():
     # Set up background image
     img = pygame.image.load("images/main_background.png")
     img = pygame.transform.scale(img, (WINDOW_WIDTH, WINDOW_HEIGHT))
     # Display the background
-    screen.blit(img, (0, 0))
+    SCREEN.blit(img, (0, 0))
 
 
-def reset_screen(screen, object_list):
+def reset_screen(object_list):
     set_background()
-    for i in list:
+    for i in object_list:
         if type(i) is list:
             for j in i:
-                j.display
-        elif type(i):
-            pass
+                j.display_brick()
+        elif type(i) is Brick:
+            i.display_brick()
+        else:
+            return False
+

@@ -1,4 +1,6 @@
- # Width and Height of the project window
+import pygame
+
+# Width and Height of the project window
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 600
 
@@ -11,11 +13,12 @@ BRICK_HEIGHT = 60
 BRICK_MOVEMENT = 5
 BRICK_DISTANCE = 60
 
-
 # Color Shortcuts
 
-YELLOW ="yellow"
+YELLOW = "yellow"
 RED = "red"
 BLUE = "blue"
 GREEN = "green"
 PURPLE = "purple"
+
+SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))

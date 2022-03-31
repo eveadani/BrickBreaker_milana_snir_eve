@@ -2,7 +2,6 @@ from classes import Brick
 import pygame
 
 from constants import *
-from helpers import screen
 
 
 class Player(Brick):
