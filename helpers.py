@@ -67,7 +67,6 @@ def reset_player(player):
     player.set_y_pos = LAUNCH_Y_POS
 
 
-def create_replacement(current_player):
-    brick_replacement = Brick(current_player.get_brick_color(), BRICK_WIDTH, BRICK_HEIGHT, current_player.get_x_pos(),
-                              current_player.get_y_pos())
+def create_replacement(color, x, y):
+    brick_replacement = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x, y)
     brick_replacement.display_brick()
