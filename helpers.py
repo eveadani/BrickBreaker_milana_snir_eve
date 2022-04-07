@@ -1,7 +1,9 @@
 import pygame
+import random
 
 from constants import *
 from classes.Brick import *
+from classes.Player import *
 
 
 def mouse_in_button(button, mouse_pos):
@@ -23,11 +25,10 @@ def mouse_in_button(button, mouse_pos):
 def colored_bricks(y_pos):
     if y_pos < 0 or y_pos > WINDOW_HEIGHT:
         return False
-    colored_bricks_list = [RED, YELLOW, GREEN, PURPLE, BLUE]
     list_brick = []
     x_pos = 0
     for i in range(10):
-        color = random.choice(colored_bricks_list)
+        color = random.choice(COLORS_LIST)
         random_brick = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x_pos, y_pos)
         list_brick.append(random_brick)
         x_pos += BRICK_DISTANCE
@@ -47,14 +48,26 @@ def set_background():
     SCREEN.blit(img, (0, 0))
 
 
-def reset_screen(object_list):
+def update_screen(object_list):
     set_background()
     for i in object_list:
         if type(i) is list:
             for j in i:
                 j.display_brick()
-        elif type(i) is Brick:
+        elif type(i) is Player:
             i.display_brick()
-        else:
-            return False
+        # else:
+        #     return False
 
+
+def reset_player(player):
+    color = random.choice(COLORS_LIST)
+    player.set_brick_color(color)
+    player.set_x_pos = LAUNCH_X_POS
+    player.set_y_pos = LAUNCH_Y_POS
+
+
+def create_replacement(current_player):
+    brick_replacement = Brick(current_player.get_brick_color(), BRICK_WIDTH, BRICK_HEIGHT, current_player.get_x_pos(),
+                              current_player.get_y_pos())
+    brick_replacement.display_brick()

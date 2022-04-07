@@ -1,7 +1,6 @@
 import pygame
 
 from constants import *
-import random
 
 
 class Brick:
@@ -29,14 +28,20 @@ class Brick:
     def get_x_pos(self):
         return self.x_pos
 
-    def get_x_pos(self):
+    def get_y_pos(self):
         return self.y_pos
 
-    def get_width_pos(self):
-        return self.brick_width
+    def set_x_pos(self, x):
+        self.x_pos = x
 
-    def get_height_pos(self):
-        return self.brick_height
+    def set_y_pos(self, y):
+        self.y_pos = y
+
+    def get_brick_color(self):
+        return self.brick_color
+
+    def set_brick_color(self, new_color):
+        self.brick_color = new_color
 
     def display_brick(self):
         SCREEN.blit(self.image, (self.x_pos, self.y_pos))
