@@ -70,3 +70,5 @@ def reset_player(player):
 def create_replacement(color, x, y):
     brick_replacement = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x, y)
     brick_replacement.display_brick()
+
+

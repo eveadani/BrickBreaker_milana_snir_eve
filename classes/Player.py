@@ -34,6 +34,8 @@ class Player(Brick):
                 if self.get_brick_color() == brick.get_brick_color():
                     disappear_list.append(brick)
                     self.points += POINT
-
         if len(disappear_list) == 0:
             helpers.create_replacement(self.brick_color, self.x_pos, self.y_pos)
+        else:
+            for brick_disappear in disappear_list:
+                brick_disappear.set_brick_color(TRANSPARENT)
