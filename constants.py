@@ -21,6 +21,7 @@ RED = "red"
 BLUE = "blue"
 GREEN = "green"
 PURPLE = "purple"
+TRANSPARENT = (0, 0, 0, 0)
 
 COLORS_LIST = [RED, YELLOW, GREEN, PURPLE, BLUE]
 SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
