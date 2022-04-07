@@ -14,13 +14,13 @@ class Brick:
 
     def create_brick(self):
         if self.brick_color == "yellow":
-            img = pygame.image.load("Images/yellow_brick.jpg")
+            img = pygame.image.load("Images/yellow_brick.png")
         if self.brick_color == "red":
-            img = pygame.image.load("Images/red_brick.jpg")
+            img = pygame.image.load("Images/red_brick.png")
         if self.brick_color == "blue":
-            img = pygame.image.load("Images/blue_brick.jpg")
+            img = pygame.image.load("Images/blue_brick.png")
         if self.brick_color == "green":
-            img = pygame.image.load("Images/green_brick.jpg")
+            img = pygame.image.load("Images/green_brick.png")
         if self.brick_color == "purple":
             img = pygame.image.load("Images/purple_brick.jpg")
         return pygame.transform.scale(img, (self.brick_width, self.brick_height))
