@@ -1,3 +1,4 @@
+import helpers
 from classes.Brick import *
 from helpers import *
 import pygame
@@ -22,16 +23,17 @@ class Player(Brick):
             self.x_pos += BRICK_MOVEMENT
 
     def launch(self):
-        if not self.y_pos < 0:
+        if not self.y_pos < 60:
             self.y_pos -= BRICK_MOVEMENT
 
     def touch_same_brick(self, brick_list):
         disappear_list = []
         for brick in brick_list:
             if self.y_pos <= brick.get_y_pos() + BRICK_HEIGHT and brick.get_x_pos() <= self.x_pos <= brick.get_x_pos() + BRICK_WIDTH:
+                print(2)
                 if self.get_brick_color() == brick.get_brick_color():
                     disappear_list.append(brick)
                     self.points += POINT
-                else:
-                    create_replacement(self)
-                    reset_player(self)
+
+        if len(disappear_list) == 0:
+            helpers.create_replacement(self.brick_color, self.x_pos, self.y_pos)
