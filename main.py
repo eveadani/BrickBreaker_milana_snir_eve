@@ -35,7 +35,7 @@ def main():
                     brick1.move_right()
                 if event.key == pygame.K_UP:
                     brick1.launch()
-                    brick1.touch_same_brick(new_row)
+                    # brick1.touch_same_brick(new_row)
 
         # Update the screen
         update_screen([brick1, new_row])

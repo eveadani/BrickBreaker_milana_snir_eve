@@ -6,8 +6,6 @@ import random
 from constants import *
 
 
-
-
 class Player(Brick):
     def __init__(self, brick_color, brick_width, brick_height, x_pos, y_pos):
         super().__init__(brick_color, brick_width, brick_height, x_pos, y_pos)
@@ -28,10 +26,9 @@ class Player(Brick):
             self.y_pos -= BRICK_MOVEMENT
 
     def touch_same_brick(self, brick_list):
-        count = 0
         disappear_list = []
         for brick in brick_list:
-            if self.y_pos <= brick.get_y_pos()+BRICK_HEIGHT and brick.get_x_pos() <= self.x_pos <= brick.get_x_pos() + BRICK_WIDTH:
+            if self.y_pos <= brick.get_y_pos() + BRICK_HEIGHT and brick.get_x_pos() <= self.x_pos <= brick.get_x_pos() + BRICK_WIDTH:
                 if self.get_brick_color() == brick.get_brick_color():
                     disappear_list.append(brick)
                     self.points += POINT
