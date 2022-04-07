@@ -35,3 +35,7 @@ class Player(Brick):
                 else:
                     create_replacement(self)
                     reset_player(self)
+
+
+
+
