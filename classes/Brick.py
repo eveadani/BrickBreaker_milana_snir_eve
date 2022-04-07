@@ -22,7 +22,7 @@ class Brick:
         if self.brick_color == "green":
             img = pygame.image.load("Images/green_brick.png")
         if self.brick_color == "purple":
-            img = pygame.image.load("Images/purple_brick.jpg")
+            img = pygame.image.load("Images/purple_brick.png")
         return pygame.transform.scale(img, (self.brick_width, self.brick_height))
 
     def get_x_pos(self):
