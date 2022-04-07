@@ -1,4 +1,5 @@
 import pygame
+from pygame import K_DOWN, KEYDOWN
 
 from constants import *
 from helpers import *
@@ -22,19 +23,20 @@ def main():
     row_displayer(new_row)
     brick1.display_brick()
     running = True
+    flag=False
     while running:
         # Grabs events such as key pressed, mouse pressed and so.
         # Going through all the events that happened in the last clock tick
         for event in pygame.event.get():
+            keys = keys.get_pressed()
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.KEYDOWN:
+            if event.type == KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     brick1.move_left()
                 if event.key == pygame.K_RIGHT:
                     brick1.move_right()
                 if event.key == pygame.K_UP:
-
                     brick1.launch()
                     brick1.touch_same_brick(new_row)
                     reset_player(brick1)

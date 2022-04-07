@@ -26,6 +26,23 @@ class Player(Brick):
         if not self.y_pos < 60:
             self.y_pos -= BRICK_MOVEMENT
 
+            clock = pygame.time.Clock()
+            loop_times = 0
+            x_pos_change = X_POS_CHANGE_LEFT
+            if self.get_x_pos() == X_POS_LEFTEST:
+                loop_times = CANT_MOVE_LOOP_TIMES
+            elif self.get_x_pos() == X_POS_START:
+                loop_times = START_MOVE_LEFT_LOOP_TIMES
+            else:
+                loop_times = MOVE_LOOP_TIMES
+            for i in range(loop_times):
+
+                pygame.draw.circle(screen, BLACK, (self.get_x_pos(), self.get_y_pos()), RADIUS)
+                self.set_x_pos(x_pos_change)
+                pygame.draw.circle(screen, self.get_color(), (self.get_x_pos(), self.get_y_pos()), RADIUS)
+                pygame.display.flip()
+                clock.tick(120)
+
     def touch_same_brick(self, brick_list):
         disappear_list = []
         for brick in brick_list:
