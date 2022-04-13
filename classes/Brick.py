@@ -57,8 +57,9 @@ class Brick:
         SCREEN.blit(self.image, (self.x_pos, self.y_pos))
 
 # Goes over a matrix list, finds the required brick then removes said brick from the screen.
-    def remove_brick(self, matrix_bricks, brick):
-        for b in matrix_bricks:
-            for f in brick:
-                if brick == f:
-                    matrix_bricks.remove(brick)
+    def remove_brick(self, matrix_bricks, disappear_list):
+        for brick in disappear_list:
+            for list in matrix_bricks:
+                for b in list:
+                    if b == brick:
+                        list.remove(brick)

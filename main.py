@@ -45,16 +45,19 @@ def main():
                     brick1.move_right()
                 if event.key == pygame.K_UP:
                     loops_and_brick = brick1.loop_times(matrix_bricks)
-                    # loops = loops_and_brick[0]
-                    # brick = loops[1]
-                    # if(0<=loops_and_brick1<=0):
-                    # print(loops_and_brick)
-                    for i in range(loops_and_brick):
+                    loops = loops_and_brick[0]
+                    spec_brick_row = loops_and_brick[1]
+                    spec_brick_col = loops_and_brick[2]
+                    # brick = loops_and_brick[1]
+                    for i in range(loops):
                         brick1.set_y_pos(brick1.get_y_pos() - BRICK_MOVEMENT)
-                        print(brick1.get_y_pos())
                         update_screen([brick1, row1, row2, row3, row4])
                         time.sleep(0.2)
                         pygame.display.update()
+                    disappear = brick1.touch_same_brick(matrix_bricks, spec_brick_row, spec_brick_col)
+                    if len(disappear)>0:
+                        remove_brick(matrix_bricks, disappear)
+                    # brick1.remove_brick(matrix_bricks,brick)
 
                     # brick1.launch(matrix_bricks)
 
