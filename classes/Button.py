@@ -1,5 +1,5 @@
 import pygame.examples.glcube
-from helpers import screen
+from constants import *
 
 
 class Button:
@@ -26,4 +26,4 @@ class Button:
             return True
 
     def create_button(self):
-        pygame.draw.rect(screen, pygame.Rect(self.x_pos, self.y_pos, self.width, self.height))
+        pygame.draw.rect(SCREEN, pygame.Rect(self.x_pos, self.y_pos, self.width, self.height))

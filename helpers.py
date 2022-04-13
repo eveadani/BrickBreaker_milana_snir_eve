@@ -58,7 +58,7 @@ def update_screen(object_list):
             i.display_brick()
         # else:
         #     return False
-
+#replace bricks which i want to delete with in and do pass if so,update_screen do matrix_bricks
 
 def reset_player(player):
     color = random.choice(COLORS_LIST)
@@ -70,5 +70,6 @@ def reset_player(player):
 def create_replacement(color, x, y):
     brick_replacement = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x, y)
     brick_replacement.display_brick()
+
 
 

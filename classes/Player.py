@@ -1,6 +1,4 @@
-import helpers
 from classes.Brick import *
-from helpers import *
 import pygame
 import time
 import random
@@ -22,26 +20,42 @@ class Player(Brick):
                 self.y_pos < 0 or self.y_pos + BRICK_HEIGHT > WINDOW_HEIGHT):
             self.x_pos += BRICK_MOVEMENT
 
-    def launch(self):
-        if not self.y_pos < 60:
-            self.y_pos -= BRICK_MOVEMENT
+    # ````   dont need launch
+    def launch(self, matrix_bricks):
+        if not self.y_pos < 0:
 
             clock = pygame.time.Clock()
-            loop_times = 0
-            x_pos_change = X_POS_CHANGE_LEFT
-            if self.get_x_pos() == X_POS_LEFTEST:
-                loop_times = CANT_MOVE_LOOP_TIMES
-            elif self.get_x_pos() == X_POS_START:
-                loop_times = START_MOVE_LEFT_LOOP_TIMES
-            else:
-                loop_times = MOVE_LOOP_TIMES
-            for i in range(loop_times):
-
-                pygame.draw.circle(screen, BLACK, (self.get_x_pos(), self.get_y_pos()), RADIUS)
-                self.set_x_pos(x_pos_change)
-                pygame.draw.circle(screen, self.get_color(), (self.get_x_pos(), self.get_y_pos()), RADIUS)
-                pygame.display.flip()
+            # loop_times = 0
+            # x_pos_change = X_POS_CHANGE_LEFT
+            # if self.get_x_pos() == X_POS_LEFTEST:
+            #     loop_times = CANT_MOVE_LOOP_TIMES
+            # elif self.get_x_pos() == X_POS_START:
+            #     loop_times = START_MOVE_LEFT_LOOP_TIMES
+            # else:
+            #     loop_times = MOVE_LOOP_TIMES
+            for i in range(self.loop_times(self.x_pos, self.y_pos, matrix_bricks)):
+                cover_img = pygame.image.load('Images/main_background.png')
+                SCREEN.blit(cover_img, (self.x_pos, self.y_pos))
+                # pygame.draw.rect(SCREEN, YELLOW, (self.x_pos, self.y_pos), )
+                self.set_y_pos(self.y_pos - BRICK_MOVEMENT)
+                self.display_brick()
+                print("displayed")
+                # pygame.display.flip()
                 clock.tick(120)
+
+    # problem in function
+    def loop_times(self, current_x_pos, current_y_pos, matrix_bricks):
+        max_y_pos = 0
+        for list_brick in matrix_bricks:
+            for brick in list_brick:
+                if (brick.get_y_pos() + BRICK_HEIGHT) > max_y_pos and current_y_pos <= (brick.get_y_pos() + BRICK_HEIGHT) and brick.get_x_pos() <= current_x_pos <= (
+                        brick.get_x_pos() + BRICK_WIDTH):
+                    max_y_pos = brick.get_y_pos() - BRICK_HEIGHT
+        loops = (WINDOW_HEIGHT - max_y_pos) // 10
+        print(loops)
+        return loops
+
+    # delete-brick in brick
 
     def touch_same_brick(self, brick_list):
         disappear_list = []
@@ -55,4 +69,5 @@ class Player(Brick):
             helpers.create_replacement(self.brick_color, self.x_pos, self.y_pos)
         else:
             for brick_disappear in disappear_list:
-                brick_disappear.set_brick_color(TRANSPARENT)
+                cover_img = pygame.image.load('Images/main_background.png')
+                SCREEN.blit(cover_img, (brick_disappear.get_x_pos(), brick_disappear.get_y_pos()))

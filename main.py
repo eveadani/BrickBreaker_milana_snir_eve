@@ -19,30 +19,37 @@ def main():
     # Set up background image
     set_background()
     brick1 = Player("green", BRICK_WIDTH, BRICK_HEIGHT, LAUNCH_X_POS, LAUNCH_Y_POS)
-    new_row = colored_bricks(0)
-    row_displayer(new_row)
+    row1 = colored_bricks(0)
+    row2 = colored_bricks(BRICK_HEIGHT)
+    row3 = colored_bricks(BRICK_HEIGHT * 2)
+    row4 = colored_bricks(BRICK_HEIGHT * 3)
+    matrix_bricks = [row1, row2, row3, row4]
+    for row in matrix_bricks:
+        row_displayer(row)
+
     brick1.display_brick()
+
     running = True
-    flag=False
     while running:
         # Grabs events such as key pressed, mouse pressed and so.
         # Going through all the events that happened in the last clock tick
         for event in pygame.event.get():
-            keys = keys.get_pressed()
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     brick1.move_left()
                 if event.key == pygame.K_RIGHT:
                     brick1.move_right()
                 if event.key == pygame.K_UP:
-                    brick1.launch()
-                    brick1.touch_same_brick(new_row)
-                    reset_player(brick1)
+                    for i in range(brick1.loop_times(brick1.get_x_pos(),brick1.get_y_pos(),matrix_bricks)):
+                        brick1.set_y_pos(brick1.get_y_pos()-BRICK_MOVEMENT)
+                        update_screen([brick1, row1, row2, row3, row4])
+                        pygame.time.wait(700)
+                    # brick1.launch(matrix_bricks)
 
         # Update the screen
-        update_screen([brick1, new_row])
+        update_screen([brick1, row1, row2, row3, row4])
 
         pygame.display.flip()
         # Update display - without input update everything
