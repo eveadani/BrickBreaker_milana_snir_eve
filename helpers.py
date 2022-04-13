@@ -47,6 +47,14 @@ def set_background():
     # Display the background
     SCREEN.blit(img, (0, 0))
 
+# Sets starting screen
+def set_starting_screen():
+    img = pygame.image.load("images/start_screen.png")
+    img = pygame.transform.scale(img, (WINDOW_WIDTH, WINDOW_HEIGHT))
+    # Display the background
+    SCREEN.blit(img, (0, 0))
+
+
 # Updates the screen
 def update_screen(object_list):
     set_background()

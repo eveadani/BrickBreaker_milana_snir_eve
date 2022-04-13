@@ -16,8 +16,21 @@ def main():
 
     clock = pygame.time.Clock()
 
+    set_starting_screen()
+    pygame.display.flip()
+
+
     # Sets up the background image and displays the following bricks on the screen in organized rows.
-    set_background()
+    running = True
+    while running:
+        # Grabs events such as key pressed, mouse pressed and so.
+        # Going through all the events that happened in the last clock tick
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                set_background()
+
     brick1 = Player("green", BRICK_WIDTH, BRICK_HEIGHT, LAUNCH_X_POS, LAUNCH_Y_POS)
     row1 = colored_bricks(0)
     row2 = colored_bricks(BRICK_HEIGHT)
@@ -62,6 +75,7 @@ def main():
         # Set the clock tick to be 60 times per second. 60 frames for second.
         # If we want faster game - increase the parameter.
         clock.tick(120)
+
     pygame.quit()
     quit()
 
