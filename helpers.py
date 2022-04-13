@@ -5,9 +5,7 @@ from constants import *
 from classes.Brick import *
 from classes.Player import *
 
-
-def mouse_in_button(button, mouse_pos):
-    """
+"""
     The function get button and mouse press position on screen and return True
     if mouse click on button
     :param button: Button object
@@ -17,11 +15,14 @@ def mouse_in_button(button, mouse_pos):
     :return: boolean
         True if mouse click on button, else False
     """
+
+
+def mouse_in_button(button, mouse_pos):
     if button.x_pos + button.width > mouse_pos[0] > button.x_pos and \
             button.y_pos < mouse_pos[1] < button.y_pos + button.height:
         return True
 
-
+# Displays the bricks on the screen, repeats the action.
 def colored_bricks(y_pos):
     if y_pos < 0 or y_pos > WINDOW_HEIGHT:
         return False
@@ -34,20 +35,19 @@ def colored_bricks(y_pos):
         x_pos += BRICK_DISTANCE
     return list_brick
 
-
+# Organizes the bricks in their respective rows each.
 def row_displayer(list_of_bricks):
     for i in list_of_bricks:
         i.display_brick()
 
-
+# Sets the background
 def set_background():
-    # Set up background image
     img = pygame.image.load("images/main_background.png")
     img = pygame.transform.scale(img, (WINDOW_WIDTH, WINDOW_HEIGHT))
     # Display the background
     SCREEN.blit(img, (0, 0))
 
-
+# Updates the screen
 def update_screen(object_list):
     set_background()
     for i in object_list:
@@ -59,8 +59,9 @@ def update_screen(object_list):
 
         # else:
         #     return False
-#replace bricks which i want to delete with in and do pass if so,update_screen do matrix_bricks
 
+
+# Replace bricks which I want to delete with in and do pass if so, update_screen do matrix_bricks
 def reset_player(player):
     color = random.choice(COLORS_LIST)
     player.set_brick_color(color)
@@ -68,9 +69,7 @@ def reset_player(player):
     player.set_y_pos = LAUNCH_Y_POS
 
 
+# Creates a replacement for the brick for the removed bricks
 def create_replacement(color, x, y):
     brick_replacement = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x, y)
     brick_replacement.display_brick()
-
-
-

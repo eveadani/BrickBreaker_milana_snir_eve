@@ -18,7 +18,7 @@ def main():
 
     clock = pygame.time.Clock()
 
-    # Set up background image
+    # Sets up the background image and displays the following bricks on the screen in organized rows.
     set_background()
     brick1 = Player("green", BRICK_WIDTH, BRICK_HEIGHT, LAUNCH_X_POS, LAUNCH_Y_POS)
     row1 = colored_bricks(0)
