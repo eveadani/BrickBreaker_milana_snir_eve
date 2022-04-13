@@ -1,3 +1,4 @@
+import helpers
 from classes.Brick import *
 import pygame
 import time
@@ -20,7 +21,6 @@ class Player(Brick):
                 self.y_pos < 0 or self.y_pos + BRICK_HEIGHT > WINDOW_HEIGHT):
             self.x_pos += BRICK_MOVEMENT
 
-    # ````   dont need launch
     def launch(self, matrix_bricks):
         if not self.y_pos < 0:
 
@@ -43,16 +43,14 @@ class Player(Brick):
                 # pygame.display.flip()
                 clock.tick(120)
 
-    # problem in function
-    def loop_times(self, current_x_pos, current_y_pos, matrix_bricks):
-        max_y_pos = 0
+    def loop_times(self, matrix_bricks):
+        loops = 1
         for list_brick in matrix_bricks:
             for brick in list_brick:
-                if (brick.get_y_pos() + BRICK_HEIGHT) > max_y_pos and current_y_pos <= (brick.get_y_pos() + BRICK_HEIGHT) and brick.get_x_pos() <= current_x_pos <= (
-                        brick.get_x_pos() + BRICK_WIDTH):
-                    max_y_pos = brick.get_y_pos() - BRICK_HEIGHT
-        loops = (WINDOW_HEIGHT - max_y_pos) // 10
-        print(loops)
+                if brick.get_x_pos() == self.x_pos :
+                    loops = loops + 1
+                    touched = brick
+        loops = 10 - loops
         return loops
 
     # delete-brick in brick

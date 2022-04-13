@@ -1,3 +1,5 @@
+import time
+
 import pygame
 from pygame import K_DOWN, KEYDOWN
 
@@ -42,10 +44,18 @@ def main():
                 if event.key == pygame.K_RIGHT:
                     brick1.move_right()
                 if event.key == pygame.K_UP:
-                    for i in range(brick1.loop_times(brick1.get_x_pos(),brick1.get_y_pos(),matrix_bricks)):
-                        brick1.set_y_pos(brick1.get_y_pos()-BRICK_MOVEMENT)
+                    loops_and_brick = brick1.loop_times(matrix_bricks)
+                    # loops = loops_and_brick[0]
+                    # brick = loops[1]
+                    # if(0<=loops_and_brick1<=0):
+                    # print(loops_and_brick)
+                    for i in range(loops_and_brick):
+                        brick1.set_y_pos(brick1.get_y_pos() - BRICK_MOVEMENT)
+                        print(brick1.get_y_pos())
                         update_screen([brick1, row1, row2, row3, row4])
-                        pygame.time.wait(700)
+                        time.sleep(0.2)
+                        pygame.display.update()
+
                     # brick1.launch(matrix_bricks)
 
         # Update the screen

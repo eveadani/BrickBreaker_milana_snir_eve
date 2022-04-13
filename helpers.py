@@ -56,6 +56,7 @@ def update_screen(object_list):
                 j.display_brick()
         elif type(i) is Player:
             i.display_brick()
+
         # else:
         #     return False
 #replace bricks which i want to delete with in and do pass if so,update_screen do matrix_bricks
