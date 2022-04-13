@@ -1,6 +1,7 @@
 import pygame
 import random
 
+from classes.Brick import Brick
 from constants import *
 from classes.Brick import *
 from classes.Player import *
@@ -22,6 +23,7 @@ def mouse_in_button(button, mouse_pos):
             button.y_pos < mouse_pos[1] < button.y_pos + button.height:
         return True
 
+
 # Displays the bricks on the screen, repeats the action.
 def colored_bricks(y_pos):
     if y_pos < 0 or y_pos > WINDOW_HEIGHT:
@@ -35,10 +37,12 @@ def colored_bricks(y_pos):
         x_pos += BRICK_DISTANCE
     return list_brick
 
+
 # Organizes the bricks in their respective rows each.
 def row_displayer(list_of_bricks):
     for i in list_of_bricks:
         i.display_brick()
+
 
 # Sets the background
 def set_background():
@@ -64,6 +68,7 @@ def update_screen(object_list):
                 j.display_brick()
         elif type(i) is Player:
             i.display_brick()
+
         # else:
         #     return False
 
@@ -80,3 +85,11 @@ def reset_player(player):
 def create_replacement(color, x, y):
     brick_replacement = Brick(color, BRICK_WIDTH, BRICK_HEIGHT, x, y)
     brick_replacement.display_brick()
+
+
+def remove_brick(self, matrix_bricks, disappear_list):
+    for brick in disappear_list:
+        for row in matrix_bricks:
+            for b in row:
+                if b == brick:
+                    list.remove(brick)
